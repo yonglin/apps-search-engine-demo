@@ -40,7 +40,8 @@ while (start):
 	## output the apps names
 	print "you might want the following {} applications: \n".format(n)
 
-	for i in range(n+1):
-		print i, '\t', top_n_list[i]
+	for i in range(n):
+		print i+1, '\t', top_n_list[i]
 
+	print '\n'
 	start = (raw_input('Do you want to continue searching?\nIf yes, type y\nIf not, type n\n') == 'y')

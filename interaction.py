@@ -30,23 +30,28 @@ TF_table = get_TF_table(app_desc_table)
 ## description_list is a nested list storing all the tokens of the descriptions of all 47 * 48 = 2256 apps
 description_list = get_description_list(app_desc_table)
 
+start = True
+while (start):
 ## type the query to search apps
-type_query = raw_input("Please describe the application you want by key words: \n")
+	type_query = raw_input("Please describe the application you want by key words: \n")
 
-## clean the query
-query = wash_data(type_query)
+	## clean the query
+	query = wash_data(type_query)
 
-## get the weighted vector by the TF and IDF
-weighted_vectors = get_query_vector(query, TF_table, description_list)
+	## get the weighted vector by the TF and IDF
+	weighted_vectors = get_query_vector(query, TF_table, description_list)
 
-## input how many apps you wanna us feedbacking
-n = int(raw_input('Pleas input the number of applications you wish us to feedback: \n'))
+	## input how many apps you wanna us feedbacking
+	n = int(raw_input('Pleas input the number of applications you wish us to feedback: \n'))
 
-## searching
-top_n_list = top_n_apps(weighted_vectors, n)
+	## searching
+	top_n_list = top_n_apps(weighted_vectors, n)
 
-## output the apps names
-print "you might want the following {} applications: \n".format(n)
+	## output the apps names
+	print "you might want the following {} applications: \n".format(n)
 
-for i in range(n+1):
-	print i, '\t', top_n_list[i]
+	for i in range(n):
+		print i+1, '\t', top_n_list[i]
+
+	print '\n'
+	start = (raw_input('Do you want to continue searching?\nIf yes, type y\nIf not, type n\n') == 'y')

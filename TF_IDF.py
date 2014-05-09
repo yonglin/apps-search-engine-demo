@@ -113,7 +113,7 @@ def top_n_apps(weighted_vectors, n):
     similarity_list = sorted(similarity_list, key=lambda similarity: similarity[1], reverse = True)
 
     top_n_list = []
-    for i in range(n+2):
+    for i in range(n+1):
         if similarity_list[i][0] != 'query':
             top_n_list.append(similarity_list[i][0])
 
